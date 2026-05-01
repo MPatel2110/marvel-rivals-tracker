@@ -1,5 +1,8 @@
 import { useState } from "react";
-import "./App.css";
+import SearchBar from "./components/SearchBar";
+import PlayerCard from "./components/PlayerCard";
+import LoadingCard from "./components/LoadingCard";
+import ErrorMessage from "./components/ErrorMessage";
 
 const API_BASE = "http://127.0.0.1:5000";
 
@@ -35,48 +38,32 @@ function App() {
     }
   }
 
-  function handleKeyDown(e) {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  }
-
   return (
-    <div className="container">
-      <h1>Marvel Rivals Tracker</h1>
-      <p className="subtitle">Look up player stats and match history</p>
-      <div className="search">
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Enter a username..."
-          autoFocus
-        />
-        <button
-          onClick={handleSearch}
-          disabled={loading || !username.trim()}
-          className="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 disabled:bg-neutral-700 disabled:cursor-not-allowed text-white rounded-md font-medium transition-colors"
-        >
-          {loading ? "Searching..." : "Search"}
-        </button>
-      </div>
-      {!hasSearched && (
-        <div className="empty-state">
+    <div className="max-w-3xl mx-auto px-6 py-8 text-neutral-200 font-sans">
+      <h1 className="text-4xl font-bold mb-1">Marvel Rivals Tracker</h1>
+      <p className="text-neutral-500 mb-8">
+        Look up player stats and match history
+      </p>
+
+      <SearchBar
+        username={username}
+        setUsername={setUsername}
+        onSearch={handleSearch}
+        loading={loading}
+      />
+
+      {!hasSearched && !loading && (
+        <div className="text-center py-12 text-neutral-500">
           <p>Search for a Marvel Rivals player to see their stats.</p>
-          <p className="hint">Try "TenZ" to start.</p>
+          <p className="text-sm text-neutral-600 mt-2">Try "TenZ" to start.</p>
         </div>
       )}
-      {error && <p className="error">Error: {error}</p>}
-      {player && (
-        <div className="result">
-          <p className="source-label">
-            Source: <strong>{player.source}</strong>
-          </p>
-          <pre>{JSON.stringify(player.data, null, 2)}</pre>
-        </div>
-      )}
+
+      {loading && <LoadingCard />}
+
+      {error && !loading && <ErrorMessage message={error} />}
+
+      {player && !loading && <PlayerCard player={player} />}
     </div>
   );
 }
