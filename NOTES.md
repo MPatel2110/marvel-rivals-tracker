@@ -28,12 +28,19 @@ Full-stack web app for looking up Marvel Rivals player stats and match history. 
 - Tailwind CSS v4 installed and wired up via @tailwindcss/vite
 - Search button converted to Tailwind utilities; rest of page still on App.css
 
-### Day 4 — Next
+### Day 4 — Frontend polish + README (Done!)
 
-- Convert remaining App.css styles to Tailwind utilities
-- Build a proper PlayerCard component instead of raw JSON dump
-- Add separate components: SearchBar, PlayerCard, MatchHistory placeholder
-- Polish loading and error states with better visual treatment
+- Converted all CSS to Tailwind utility classes
+- Extracted SearchBar, PlayerCard, LoadingCard, ErrorMessage components
+- Added skeleton loader (animate-pulse) and structured error display
+- Wrote project README with screenshot, architecture diagram, and setup docs
+
+### Day 5 — Next
+
+- Add match history view (separate component)
+- Hero stats breakdown
+- Add `/api/player/<name>/match-history` endpoint integration on frontend
+- Maybe deploy backend to Render + frontend to Vercel
 
 ### Tailwind v4 things to remember
 
