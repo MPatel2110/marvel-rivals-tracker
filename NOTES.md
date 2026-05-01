@@ -20,11 +20,26 @@ Full-stack web app for looking up Marvel Rivals player stats and match history. 
 - Cache-aside pattern: `/api/player/<name>` checks SQLite first, hits external API only on miss/stale
 - Verified end-to-end: first request returns `"source": "api"`, second request returns `"source": "cache"`
 
-### Day 3 — Next
+### Day 3 — Frontend foundation ✓
 
-- Add `/api/player/<name>/match-history` endpoint
-- Build basic React frontend with player search
-- Display player stats from the API in a real UI
+- React + Vite project set up in `frontend/`
+- Player search component with state, controlled input, async fetch
+- Polish: Enter key submits, autoFocus, empty state, hover/disabled states
+- Tailwind CSS v4 installed and wired up via @tailwindcss/vite
+- Search button converted to Tailwind utilities; rest of page still on App.css
+
+### Day 4 — Next
+
+- Convert remaining App.css styles to Tailwind utilities
+- Build a proper PlayerCard component instead of raw JSON dump
+- Add separate components: SearchBar, PlayerCard, MatchHistory placeholder
+- Polish loading and error states with better visual treatment
+
+### Tailwind v4 things to remember
+
+- Preflight resets default heading sizes — need explicit h1/h2 styles in index.css
+- Body background needs explicit setting since Tailwind doesn't apply one
+- Setup is just `@import "tailwindcss";` + Vite plugin (don't follow v3 tutorials)
 
 ## Architecture
 
