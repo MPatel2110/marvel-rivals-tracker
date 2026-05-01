@@ -4,14 +4,14 @@ Full-stack web app for looking up Marvel Rivals player stats and match history. 
 
 ## Status
 
-### Day 1 — Backend foundation ✓
+### Day 1 — Backend foundation (Done!)
 
 - Flask backend running on :5000
 - `/api/health` and `/api/player/<username>` endpoints
 - Confirmed real data returns from marvelrivalsapi.com
 - Initial commit pushed to GitHub
 
-### Day 2 — Database + caching layer ✓
+### Day 2 — Database + caching layer (Done!)
 
 - SQLite database with 4 tables: `players`, `matches`, `hero_stats`, `cache_entries`
 - Cache layer in `db.py` with TTL-based freshness checks (1 hour for players, 30 days for UID mappings)
@@ -20,7 +20,7 @@ Full-stack web app for looking up Marvel Rivals player stats and match history. 
 - Cache-aside pattern: `/api/player/<name>` checks SQLite first, hits external API only on miss/stale
 - Verified end-to-end: first request returns `"source": "api"`, second request returns `"source": "cache"`
 
-### Day 3 — Frontend foundation ✓
+### Day 3 — Frontend foundation (Done!)
 
 - React + Vite project set up in `frontend/`
 - Player search component with state, controlled input, async fetch
