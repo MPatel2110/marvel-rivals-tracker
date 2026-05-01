@@ -21,20 +21,22 @@ A full-stack web app for looking up Marvel Rivals player stats, built with a Fla
 
 The project follows a separation-of-concerns pattern across three backend modules and a component-based frontend.
 
+```
 marvel-rivals-tracker/
 ├── backend/
-│ ├── app.py # Flask routes, request orchestration
-│ ├── api_client.py # External API integration with timeouts and custom exceptions
-│ ├── db.py # SQLite schema and cache read/write functions
-│ └── data/ # SQLite database (gitignored)
+│   ├── app.py            # Flask routes, request orchestration
+│   ├── api_client.py     # External API integration with timeouts and custom exceptions
+│   ├── db.py             # SQLite schema and cache read/write functions
+│   └── data/             # SQLite database (gitignored)
 └── frontend/
-└── src/
-├── App.jsx
-└── components/
-├── SearchBar.jsx
-├── PlayerCard.jsx
-├── LoadingCard.jsx
-└── ErrorMessage.jsx
+    └── src/
+        ├── App.jsx
+        └── components/
+            ├── SearchBar.jsx
+            ├── PlayerCard.jsx
+            ├── LoadingCard.jsx
+            └── ErrorMessage.jsx
+```
 
 ### How Caching works
 
