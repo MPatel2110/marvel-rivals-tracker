@@ -4,7 +4,7 @@ import PlayerCard from "./components/PlayerCard";
 import LoadingCard from "./components/LoadingCard";
 import ErrorMessage from "./components/ErrorMessage";
 
-const API_BASE = "http://127.0.0.1:5000";
+const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:5000";
 
 function App() {
   const [username, setUsername] = useState("");
