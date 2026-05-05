@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, jsonify
 from flask_cors import CORS
 
@@ -6,8 +8,13 @@ import db
 from api_client import APIError
 
 app = Flask(__name__)
-CORS(app)
 
+allowed_origins = os.environ.get(
+    "ALLOWED_ORIGINS",
+    "http://localhost:5173,http://localhost:3000"
+).split(",")
+
+CORS(app, origins=allowed_origins)
 # Make sure database tables exist whenever the app starts
 db.init_schema()
 

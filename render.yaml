@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: marvel-rivals-tracker-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: MARVEL_RIVALS_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
